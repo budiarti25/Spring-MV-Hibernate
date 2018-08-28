@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <bean class="beans.region.ViewBean" id="ViewRegionBean"/>
+    <bean class="beans.region.DetailBean" id="DetailRegionBean"/>
+    <bean class="beans.region.SaveBean" id="SaveRegionBean"/>
+    <bean class="beans.region.SearchBean" id="SearchRegionBean"/>
+    <bean class="beans.region.DropBean" id="DropRegionBean"/>
+    
+    <bean class="beans.job.ViewBeanJob" id="ViewJobBean"/>
+    <bean class="beans.job.DetailBeanJob" id="DetailJobBean"/>
+    <bean class="beans.job.SaveBeanJob" id="SaveJobBean"/>
+    <bean class="beans.job.SearchBeanJob" id="SearchJobBean"/>
+    <bean class="beans.job.DropBeanJob" id="DropJobBean"/>
+    
+    <bean class="beans.location.ViewBeanLocation" id="ViewLocationBean"/>
+    <bean class="beans.location.DetailBeanLocation" id="DetailLocationBean"/>
+    <bean class="beans.location.SaveBeanLocation" id="SaveLocationBean"/>
+    <bean class="beans.location.SearchBeanLocation" id="SearchLocationBean"/>
+    <bean class="beans.location.DropBeanLocation" id="DropLocationBean"/>
+    
+    <bean class="beans.country.ViewBeanCountry" id="ViewCountryBean"/>
+    <bean class="beans.country.DetailBeanCountry" id="DetailCountryBean"/>
+    <bean class="beans.country.SaveBeanCountry" id="SaveCountryBean"/>
+    <bean class="beans.country.SearchBeanCountry" id="SearchCountryBean"/>
+    <bean class="beans.country.DropBeanCountry" id="DropCountryBean"/>
+    
+    <bean class="beans.employee.ViewBeanEmployee" id="ViewEmployeeBean"/>
+    <bean class="beans.employee.DetailBeanEmployee" id="DetailEmployeeBean"/>
+    <bean class="beans.employee.SaveBeanEmployee" id="SaveEmployeeBean"/>
+    <bean class="beans.employee.SearchBeanEmployee" id="SearchEmployeeBean"/>
+    <bean class="beans.employee.DropBeanEmployee" id="DropEmployeeBean"/>
+    
+    <bean class="beans.department.ViewBeanDepartment" id="ViewDepartmentBean"/>
+    <bean class="beans.department.DetailBeanDepartment" id="DetailDepartmentBean"/>
+    <bean class="beans.department.SaveBeanDepartment" id="SaveDepartmentBean"/>
+    <bean class="beans.department.SearchBeanDepartment" id="SearchDepartmentBean"/>
+    <bean class="beans.department.DropBeanDepartment" id="DropDepartmentBean"/>
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexController</prop>
+                <prop key="regions.htm">ViewRegionBean</prop>
+                <prop key="regionDetail.htm">DetailRegionBean</prop>
+                <prop key="regionSave.htm">SaveRegionBean</prop>
+                <prop key="regionSearch.htm">SearchRegionBean</prop>
+                <prop key="regionDrop.htm">DropRegionBean</prop>
+                
+                <prop key="jobs.htm">ViewJobBean</prop>
+                <prop key="jobDetail.htm">DetailJobBean</prop>
+                <prop key="jobSave.htm">SaveJobBean</prop>
+                <prop key="jobSearch.htm">SearchJobBean</prop>
+                <prop key="jobDrop.htm">DropJobBean</prop>
+                
+                <prop key="locations.htm">ViewLocationBean</prop>
+                <prop key="locationDetail.htm">DetailLocationBean</prop>
+                <prop key="locationSave.htm">SaveLocationBean</prop>
+                <prop key="locationSearch.htm">SearchLocationBean</prop>
+                <prop key="locationDrop.htm">DropLocationBean</prop>
+                
+                <prop key="countries.htm">ViewCountryBean</prop>
+                <prop key="countryDetail.htm">DetailCountryBean</prop>
+                <prop key="countrySave.htm">SaveCountryBean</prop>
+                <prop key="countrySearch.htm">SearchCountryBean</prop>
+                <prop key="countryDrop.htm">DropCountryBean</prop>
+                
+                <prop key="employees.htm">ViewEmployeeBean</prop>
+                <prop key="employeeDetail.htm">DetailEmployeeBean</prop>
+                <prop key="employeeSave.htm">SaveEmployeeBean</prop>
+                <prop key="employeeSearch.htm">SearchEmployeeBean</prop>
+                <prop key="employeeDrop.htm">DropEmployeeBean</prop>
+                
+                <prop key="departments.htm">ViewDepartmentBean</prop>
+                <prop key="departmentDetail.htm">DetailDepartmentBean</prop>
+                <prop key="departmentSave.htm">SaveDepartmentBean</prop>
+                <prop key="departmentSearch.htm">SearchDepartmentBean</prop>
+                <prop key="departmentDrop.htm">DropDepartmentBean</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+</beans>
