@@ -30,6 +30,13 @@
                 </tr>
             </table>
         </form><hr><br>
+        
+         <!--button print report -->
+         <form action="reportDept.htm">
+             <input type="text" name="departmentId" value="">
+             <button type="submit">Print Department</button>
+         </form>
+
         <r:out value="${message}"/><br>
         <a href="departmentDetail.htm?departmentId=0">Add Department</a>
         <table border="1">

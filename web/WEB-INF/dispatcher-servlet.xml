@@ -54,6 +54,10 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">indexController</prop>
+                <prop key="reportDept.htm">reportDepartment</prop>
+                <prop key="reportEmp.htm">reportEmployee</prop>
+                <prop key="findEmp.htm">findEmployeeByManager</prop>
+                
                 <prop key="regions.htm">ViewRegionBean</prop>
                 <prop key="regionDetail.htm">DetailRegionBean</prop>
                 <prop key="regionSave.htm">SaveRegionBean</prop>
@@ -104,5 +108,17 @@
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
-
+    
+    <bean name="reportDepartment"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="ReportDepartment" />
+    
+    <bean name="reportEmployee"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="ReportEmployee" />
+    
+    <bean name="findEmployeeByManager"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="ReportManager" />
+    
 </beans>

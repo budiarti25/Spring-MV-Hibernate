@@ -15,6 +15,12 @@
     </head>
     <body>
         <h1>This Employee View</h1><hr>
+        
+        <form action="findEmp.htm">
+            <input type="text" name="managerId" value="">
+            <button type="submit">Find Employees</button>
+        </form>
+        
         <form action="employeeSearch.htm">
             <table>
                 <tr>
@@ -37,6 +43,13 @@
                 </tr>
             </table>
         </form><hr><br>
+        
+        <!--button print report -->
+        <form action="reportEmp.htm">
+            <!--<input type="text" name="employeeId" value="">-->
+            <button type="submit">All Data Employees</button>
+        </form>
+        
         <r:out value="${message}"/><br>
         <a href="employeeDetail.htm?employeeId=0">Add Employee</a>
         <table border="1">
