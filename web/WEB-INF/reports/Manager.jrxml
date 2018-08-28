@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f2c027ca-4ae0-47ef-9aa8-3f4c682edf51">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="managerId" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     EMPLOYEES."FIRST_NAME" AS EMPLOYEES_FIRST_NAME,
+     EMPLOYEES."LAST_NAME" AS EMPLOYEES_LAST_NAME,
+     EMPLOYEES."EMAIL" AS EMPLOYEES_EMAIL,
+     EMPLOYEES."MANAGER_ID" AS EMPLOYEES_MANAGER_ID,
+     JOBS."JOB_TITLE" AS JOBS_JOB_TITLE,
+     DEPARTMENTS."DEPARTMENT_ID" AS DEPARTMENTS_DEPARTMENT_ID,
+     DEPARTMENTS."DEPARTMENT_NAME" AS DEPARTMENTS_DEPARTMENT_NAME
+FROM
+     "HR"."JOBS" JOBS INNER JOIN "HR"."EMPLOYEES" EMPLOYEES ON JOBS."JOB_ID" = EMPLOYEES."JOB_ID"
+     INNER JOIN "HR"."DEPARTMENTS" DEPARTMENTS ON EMPLOYEES."EMPLOYEE_ID" = DEPARTMENTS."MANAGER_ID"
+     AND DEPARTMENTS."DEPARTMENT_ID" = EMPLOYEES."DEPARTMENT_ID"
+where 
+ EMPLOYEES."MANAGER_ID" = $P{managerId}
+]]>
+	</queryString>
+	<field name="EMPLOYEES_FIRST_NAME" class="java.lang.String"/>
+	<field name="EMPLOYEES_LAST_NAME" class="java.lang.String"/>
+	<field name="EMPLOYEES_EMAIL" class="java.lang.String"/>
+	<field name="EMPLOYEES_MANAGER_ID" class="java.math.BigDecimal"/>
+	<field name="JOBS_JOB_TITLE" class="java.lang.String"/>
+	<field name="DEPARTMENTS_DEPARTMENT_ID" class="java.math.BigDecimal"/>
+	<field name="DEPARTMENTS_DEPARTMENT_NAME" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="175" y="27" width="219" height="36" uuid="5edbab4b-1dc0-44c9-91b2-b02b976348c2"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee By Manager]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="43" width="100" height="20" uuid="641ad814-edb2-41ad-a9cc-fafae2b1a669"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="84eb1c61-7850-4e15-a0db-f090d8aba5da"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Manager ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="137" height="20" uuid="0828fbcc-37dd-486a-be96-d4f9049b9d28"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="0" width="118" height="20" uuid="cfcdf1a5-4c11-4232-adf3-59b9a941bce8"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="100" height="20" uuid="e1591e4e-4271-439d-bdab-cd422a86965b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Job]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="98bdf16d-1b79-42bc-9e44-e2f2492c8395"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="34" width="551" height="1" uuid="862a477e-fa43-4a3c-b31a-e9ae3b85b588"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="cad822dd-6309-42af-87c2-51abf6f05ff9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EMPLOYEES_MANAGER_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="137" height="20" uuid="be5eb307-0205-4a6d-99de-dd66466a7f53"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EMPLOYEES_FIRST_NAME} +" "+$F{EMPLOYEES_LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="0" width="118" height="20" uuid="adac2c7d-c8b8-4df3-acff-6ff92cd1f7a2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EMPLOYEES_EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="100" height="20" uuid="f052e494-90e7-44b3-9d63-72e8542c425b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{JOBS_JOB_TITLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="df569320-648f-4f1b-8c20-21c742400e3f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DEPARTMENTS_DEPARTMENT_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
