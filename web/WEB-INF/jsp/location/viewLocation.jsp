@@ -4,6 +4,7 @@
     Author     : Dayinta Warih Wulandari
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="r" %>
 
@@ -56,7 +57,16 @@
                         <td><r:out value="${location.getStreetAddress()}"></r:out></td>
                         <td><r:out value="${location.getPostalCode()}"></r:out></td>
                         <td><r:out value="${location.getCity()}"></r:out></td>
-                        <td><r:out value="${location.getStateProvince()}"></r:out></td>
+                            <td>
+                            <r:choose>
+                                <r:when test="${location.getStateProvince() == null}">
+                                <r:out value="-"></r:out>
+                                </r:when>
+                                <r:otherwise>
+                                    <r:out value="${location.getStateProvince()}"></r:out>
+                                </r:otherwise>
+                            </r:choose>
+                        </td>
                         <td><r:out value="${location.getCountries().getCountryName()}"></r:out></td>
                         <td><a href="locationDetail.htm?locationId=${location.getLocationId()}">Edit</a></td>
                         <td><a href="locationDrop.htm?locationId=${location.getLocationId()}">Drop</a></td>

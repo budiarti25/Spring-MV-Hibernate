@@ -12,14 +12,14 @@ import daos.QueryEnum;
  * @author Ignatius
  */
 public enum EntitiesEnum {
-    COUNTRY("Countries"), COUNTRYID("countryId"), COUNTRYNAME("countryName"), REGIONS("regions"),
-    DEPARTMENT("Departments"), DEPARTMENTID("departmentId"), DEPARTMENTNAME("departmentName"), LOCATIONS("locations"), EMPLOYEES("employees"),
+    COUNTRY("Countries"), COUNTRYID("countryId"), COUNTRYNAME("countryName"), REGIONS("regions.regionName"),
+    DEPARTMENT("Departments"), DEPARTMENTID("departmentId"), DEPARTMENTNAME("departmentName"), EMPLOYEES("employees.firstName"), LOCATIONS("locations.streetAddress"),
     EMPLOYEE("Employees"), EMPLOYEEID("employeeId"), EMPLOYEEFIRSTENAME("firstName")
     , EMPLOYEELASTNAME("lastName"), EMPLOYEEEMAIL("email"), EMPLOYEEPHONE("phoneNumber")
-    , EMPLOYEEHIRE("hireDate"), EMPLOYEESALARY("salary"), EMPLOYEECOMMISSION("commissionPct"), DEPARTMENTS("departments"), JOBS("jobs"),
+    , EMPLOYEEHIRE("hireDate"), EMPLOYEESALARY("salary"), EMPLOYEECOMMISSION("commissionPct"), DEPARTMENTS("departments.departmentName"), JOBS("jobs.jobTitle"),
     JOB("Jobs"), JOBID("jobId"), JOBTITLE("jobTitle"), JOBMINSAL("minSalary"), JOBMAXSAL("maxSalary"),
     LOCATION("Locations"), LOCATIONID("locationId"), LOCATIONSTREETADDRESS("streetAddress")
-    , LOCATIONPOSTALCODE("postalCode"), LOCATIONCITY("city"), LOCATIONSTATEPROVICE("stateProvince"), COUNTRIES("countries"),
+    , LOCATIONPOSTALCODE("postalCode"), LOCATIONCITY("city"), LOCATIONSTATEPROVICE("stateProvince"), COUNTRIES("countries.countryName"),
     REGION("Regions"), REGIONID("regionId"), REGIONNAME("regionName");
 
     private final String property;

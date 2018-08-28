@@ -26,7 +26,7 @@
                             <option value="3">Email</option>
                             <option value="4">Phone Number</option>
                             <option value="5">Hire Date</option>
-                            <option value="6">Job Id</option>
+                            <option value="6">Job Title</option>
                             <option value="7">Salary</option>
                             <option value="8">Commission Pct</option>
                             <option value="9">Manager</option>
@@ -49,7 +49,7 @@
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Hire Date</th>
-                    <th>Job ID</th>
+                    <th>Job Title</th>
                     <th>Salary</th>
                     <th>Commission Pct</th>
                     <th>Manager</th>
