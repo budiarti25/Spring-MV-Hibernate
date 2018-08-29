@@ -13,23 +13,18 @@
      EMPLOYEES."EMAIL" AS EMPLOYEES_EMAIL,
      EMPLOYEES."MANAGER_ID" AS EMPLOYEES_MANAGER_ID,
      JOBS."JOB_TITLE" AS JOBS_JOB_TITLE,
-     DEPARTMENTS."DEPARTMENT_ID" AS DEPARTMENTS_DEPARTMENT_ID,
-     DEPARTMENTS."DEPARTMENT_NAME" AS DEPARTMENTS_DEPARTMENT_NAME
+     EMPLOYEES."EMPLOYEE_ID" AS EMPLOYEES_EMPLOYEE_ID
 FROM
      "HR"."JOBS" JOBS INNER JOIN "HR"."EMPLOYEES" EMPLOYEES ON JOBS."JOB_ID" = EMPLOYEES."JOB_ID"
-     INNER JOIN "HR"."DEPARTMENTS" DEPARTMENTS ON EMPLOYEES."EMPLOYEE_ID" = DEPARTMENTS."MANAGER_ID"
-     AND DEPARTMENTS."DEPARTMENT_ID" = EMPLOYEES."DEPARTMENT_ID"
-where 
- EMPLOYEES."MANAGER_ID" = $P{managerId}
-]]>
+WHERE
+     EMPLOYEES."MANAGER_ID" = $P{managerId}]]>
 	</queryString>
 	<field name="EMPLOYEES_FIRST_NAME" class="java.lang.String"/>
 	<field name="EMPLOYEES_LAST_NAME" class="java.lang.String"/>
 	<field name="EMPLOYEES_EMAIL" class="java.lang.String"/>
 	<field name="EMPLOYEES_MANAGER_ID" class="java.math.BigDecimal"/>
 	<field name="JOBS_JOB_TITLE" class="java.lang.String"/>
-	<field name="DEPARTMENTS_DEPARTMENT_ID" class="java.math.BigDecimal"/>
-	<field name="DEPARTMENTS_DEPARTMENT_NAME" class="java.lang.String"/>
+	<field name="EMPLOYEES_EMPLOYEE_ID" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -81,16 +76,16 @@ where
 				</textElement>
 				<text><![CDATA[Job]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="455" y="0" width="100" height="20" uuid="98bdf16d-1b79-42bc-9e44-e2f2492c8395"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Department]]></text>
-			</staticText>
 			<line>
 				<reportElement x="4" y="34" width="551" height="1" uuid="862a477e-fa43-4a3c-b31a-e9ae3b85b588"/>
 			</line>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="01e48919-45ea-4948-8429-edc984170586"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee ID]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -116,9 +111,9 @@ where
 				<textFieldExpression><![CDATA[$F{JOBS_JOB_TITLE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="0" width="100" height="20" uuid="df569320-648f-4f1b-8c20-21c742400e3f"/>
+				<reportElement x="455" y="0" width="100" height="20" uuid="c43be481-fe18-44ac-9c7f-912042397c9c"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{DEPARTMENTS_DEPARTMENT_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{EMPLOYEES_EMPLOYEE_ID}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
